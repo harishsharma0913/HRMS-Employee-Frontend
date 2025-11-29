@@ -58,8 +58,8 @@ const Login = ({ onLogin }) => {
       {/* Left Side: Logo + Form */}
       <div className="flex-1 relative px-6 py-4">
         {/* Logo at top-left */}
-        <div className="absolute top-4 left-4">
-          <img src={logo} alt="HRMS Logo" className="h-10 md:h-12" />
+        <div className="absolute top-4 left-10">
+          <img src={logo} alt="HRMS Logo" className="h-6 md:h-8" />
         </div>
 
         {/* Centered Login Form */}
