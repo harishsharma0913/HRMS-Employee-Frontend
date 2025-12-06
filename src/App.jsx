@@ -11,6 +11,7 @@ import Learning from './EmployeePages/Learning'
 import Document from './EmployeePages/Document'
 import Setting from './EmployeePages/Setting'
 import PrivateRoute from './Componenet/PrivateRoute'
+import TaskHomePage from './Task/TaskHomePage'
 
 function App() {
   return (
@@ -23,9 +24,9 @@ function App() {
             <Route path="/time-off" element={<TimeOff />} />
             <Route path="/help" element={<Payroll />} />
             {/* <Route path="/performance" element={<Performance />} /> */}
-            {/* <Route path="/learning" element={<Learning />} /> */}
             <Route path="/documents" element={<Document />} />
             <Route path="/settings" element={<Setting />} />
+            <Route path="/task" element={<TaskHomePage />} />
           </Route>
      </Routes>
     </BrowserRouter>

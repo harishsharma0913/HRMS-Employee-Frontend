@@ -65,6 +65,20 @@ postFormData: async (url, formData) => {
   return handleResponse(res);
 },
 
+// PUT request
+put: async (url, body) => {
+  const res = await fetch(`${BASE_URL}${url}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  return handleResponse(res);
+},
+
 
   // PATCH request
 patch: async (url, body) => {

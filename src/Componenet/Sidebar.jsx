@@ -8,7 +8,7 @@ import {
   Target,
   User,
   Users,
-  BookOpen,
+  BookType,
   X,
   ChevronLeft,
   ChevronRight,
@@ -96,9 +96,9 @@ const Sidebar = ({ closeSidebar, collapsed, setCollapsed }) => {
         <SidebarBtn icon={<User size={17} />} label="My Profile" to="/profile" collapsed={collapsed} />
         <SidebarBtn icon={<Calendar size={17} />} label="Leave" to="/time-off" collapsed={collapsed} />
         <SidebarBtn icon={<HelpCircle size={17} />} label="Help" to="/help" collapsed={collapsed} />
-        {/* <SidebarBtn icon={<Target size={17} />} label="Performance" to="/performance" collapsed={collapsed} /> */}
         {/* <SidebarBtn icon={<BookOpen size={17} />} label="Learning" to="/learning" collapsed={collapsed} /> */}
         <SidebarBtn icon={<FileText size={17} />} label="Documents" to="/documents" collapsed={collapsed} />
+        <SidebarBtn icon={<BookType size={17} />} label="Task" to="/task" collapsed={collapsed} />
 
         <div className=" border-t border-gray-300" />
 

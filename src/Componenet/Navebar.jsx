@@ -28,14 +28,18 @@ import { NavLink } from "react-router-dom";
         <button className="p-2 rounded-full hover:bg-gray-200 transition">
           <Bell className="w-[18px] h-[18px] text-gray-700" />
         </button>
-        <NavLink className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-sm font-semibold text-white">
-          {(() => {
-            const name = employee?.fullName?.trim().split(" ");
-            if (!name) return "U";
-            const first = name[0]?.charAt(0).toUpperCase() || "";
-            const last = name[1]?.charAt(0).toUpperCase() || "";
-            return first + last;
-          })()}
+        <NavLink
+          to="/profile"
+         className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold text-white">
+        <img
+          src={
+            employee?.documents?.profileImage
+              ? `https://hrms-api.tipsg.in/uploads/${employee.documents.profileImage}`
+              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmvSoqEMvs4E-TIgyfMdztZYEdKav-zok1A&s"
+          }
+          alt={employee?.fullName || "Profile"}
+          className="w-9 h-9 rounded-full object-cover"
+        />
         </NavLink>
         <button className="p-2 rounded-full hover:bg-gray-200 transition">
           <EllipsisVertical className="w-[20px] h-[20px] text-gray-700" />
