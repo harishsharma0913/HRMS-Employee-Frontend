@@ -5,12 +5,14 @@ import rigthImage from "./assets/RightImage.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess, fetchEmployeeData } from "./ReduxToolkit/authSlice";
+import ForgotPasswordModal from "./ForgotPasswordFlow/ForgotPasswordFlow";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [open , setOpen] = useState(false);
   const navigate = useNavigate();
   const holdTimeout = useRef(null); 
   const dispatch = useDispatch();
@@ -99,9 +101,12 @@ const Login = ({ onLogin }) => {
           </div>
 
               <div className="flex items-center justify-center text-sm">
-                <a href="#" className="text-blue-600 hover:underline">
+                <button
+                  type="button"
+                  onClick={() => setOpen(true)}
+                 className="text-blue-600 hover:underline">
                   Forgot Password?
-                </a>
+                </button>
               </div>
 
               <button
@@ -129,6 +134,7 @@ const Login = ({ onLogin }) => {
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
+    {open && <ForgotPasswordModal open={open} onClose={() => setOpen(false)} />}
     </div>
   );
 };
