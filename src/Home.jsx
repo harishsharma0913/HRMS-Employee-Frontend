@@ -1,41 +1,47 @@
-import StatCard from './Dashboard/StatCard';
-import ActivityCard from './Dashboard/ActivityCard';
-import QuickActions from './Dashboard/QuickActions';
-import GoalProgress from './Dashboard/GoalProgress';
-import UpcomingEvents from './Dashboard/UpcomingEvents';
-import CompanyNews from './Dashboard/CompanyNews';
+import TopStats from "./Dashboard/TopStats";
+import LeaveSummary from "./Dashboard/LeaveSummary";
+import TasksList from "./Dashboard/TasksList";
+import SupportTickets from "./Dashboard/SupportTickets";
+import RecentDocuments from "./Dashboard/RecentDocuments";
+import RecentActivities from "./Dashboard/RecentActivities";
+import { use, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllTasks } from "./ReduxToolkit/taskSlice";
+import { fetchEmployeeData, getMyLeaves, getMyTickets } from "./ReduxToolkit/authSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const {allTasks} = useSelector((state) => state.tasks);
+  const { employee, leaves, tickets } = useSelector((state) => state.auth);
+
+  const RecentDocumentsData = employee.documents || [];
+  console.log(employee);
+  
+  const emp = employee || JSON.parse(localStorage.getItem("employee"));
+  const empId = emp?._id || emp?.id;
+
+  useEffect(() => {
+    dispatch(getAllTasks());
+    dispatch(getMyLeaves({ empId: empId }));
+    dispatch(getMyTickets(empId));
+    dispatch(fetchEmployeeData());
+  }, [dispatch]);
   return (
-      <div className="flex-1 overflow-auto">
-        <main className="space-y-6">
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard title="Available PTO" value="18.5" subtitle="days remaining" icon="calendar" />
-            <StatCard title="Hours This Week" value="32.5" subtitle="of 40 hours" icon="clock" />
-            <StatCard title="Performance Score" value="4.2" subtitle="out of 5.0" icon="trending-up" />
-            <StatCard title="Next Paycheck" value="$3,250" subtitle="in 5 days" icon="dollar-sign" />
-          </div>
+    <div className=" bg-gray-100 min-h-screen space-y-6">
+      <TopStats tasks={allTasks} leaves={leaves} tickets={tickets} documents={employee} />
 
-          {/* Grid */}
-         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Left side (2/3 width) */}
-           <div className="lg:col-span-2 space-y-4">
-            <ActivityCard />
-            <GoalProgress />
-           </div>
-
-          {/* Right side (1/3 width) - STACKED CARDS */}
-           <div className="flex flex-col gap-4">
-            <QuickActions />
-            <UpcomingEvents />
-            <CompanyNews />
-           </div>
-         </div>
-        </main>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <LeaveSummary leaves={leaves} />
+        <TasksList tasks={allTasks} />
       </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <SupportTickets tickets={tickets} />
+        <RecentDocuments documents={RecentDocumentsData} />
+      </div>
 
+      <RecentActivities tasks={allTasks} leaves={leaves} tickets={tickets} documents={employee} />
+    </div>
   );
 };
 
