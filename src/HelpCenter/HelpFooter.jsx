@@ -1,28 +1,7 @@
-import { ChevronRight, Headphones } from 'lucide-react';
+import { Headphones } from 'lucide-react';
 
 export default function HelpFooter() {
-  const articles = [
-    'How to Apply for Leave',
-    'Updating Personal Information',
-    'Downloading Pay Slips',
-    'Attendance Marking Guide',
-    'Document Upload Process'
-  ];
-
   return (
-    <div className="mt-4">
-      <h3 className="text-lg font-semibold mb-2">Popular Help Articles</h3>
-      <ul className="space-y-2">
-        {articles.map((article, idx) => (
-          <li
-            key={idx}
-            className="flex justify-between items-center p-3 bg-white border rounded-md hover:shadow cursor-pointer"
-          >
-            <span>{article}</span>
-            <ChevronRight className="w-4 h-4 text-gray-500" />
-          </li>
-        ))}
-      </ul>
       <div className="mt-6 p-4 border rounded-md bg-blue-50 hover:shadow">
         <div className="flex items-start gap-4">
           <div className="flex-1">
@@ -37,6 +16,6 @@ export default function HelpFooter() {
           <Headphones className="w-10 h-10 text-blue-500" />
         </div>
       </div>
-    </div>
+    
   );
 }

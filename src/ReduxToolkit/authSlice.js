@@ -10,7 +10,7 @@ export const getMyLeaves = createAsyncThunk(
       if (!response.status) {
         throw new Error(response.message || 'Failed to fetch leaves');
       }
-      return response.leave;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error || "Error fetching leaves");
     }
@@ -19,15 +19,15 @@ export const getMyLeaves = createAsyncThunk(
 
 export const getMyLeavesFiltered = createAsyncThunk(
   "auth/getMyLeavesFiltered",
-  async ({ empId, status, type, from, to }, thunkAPI) => {
+  async ({ empId, status, type, from, to, page, limit }, thunkAPI) => {
     try {
       const response = await api.get(`/login/leave/${empId}`, {
-        params: { status, type, from, to },
+        params: { status, type, from, to, page, limit },
       }); 
       if (!response.status) {
         throw new Error(response.message || 'Failed to fetch filtered leaves');
-      }
-      return response.leave;
+      }      
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error || "Error fetching filtered leaves");
     }
