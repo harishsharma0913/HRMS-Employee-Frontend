@@ -62,6 +62,7 @@ const taskSlice = createSlice({
     loading: false,
     success: false,
     error: null,
+    allTaskLoading: false,
     tasks: [],
     allTasks: [],
     totalTasks: 0,
@@ -74,6 +75,7 @@ const taskSlice = createSlice({
       state.loading = false;
       state.success = false;
       state.error = null;
+      state.allTaskLoading = false;
     },
   },
 
@@ -98,14 +100,14 @@ const taskSlice = createSlice({
 
       // GET ALL TASKS
       .addCase(getAllTasks.pending, (state) => {
-        state.loading = true;
+        state.allTaskLoading = true;
       })
       .addCase(getAllTasks.fulfilled, (state, action) => {
-        state.loading = false;
+        state.allTaskLoading = false;
         state.allTasks = action.payload || [];
       })
       .addCase(getAllTasks.rejected, (state, action) => {
-        state.loading = false;
+        state.allTaskLoading = false;
         state.error = action.payload;
       })
 
