@@ -34,7 +34,7 @@ import { NavLink } from "react-router-dom";
         <img
           src={
             employee?.documents?.profileImage
-              ? `https://hrms-api.tipsg.in/uploads/${employee.documents.profileImage}`
+              ? `https://hrms-backend-i9gs.onrender.com/uploads/${employee.documents.profileImage}`
               : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmvSoqEMvs4E-TIgyfMdztZYEdKav-zok1A&s"
           }
           alt={employee?.fullName || "Profile"}

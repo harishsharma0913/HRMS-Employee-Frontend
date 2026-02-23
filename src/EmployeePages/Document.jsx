@@ -36,7 +36,7 @@ const Documents = () => {
     
       const handleDownload = async (fileName) => {
   try {
-    const response = await fetch(`https://hrms-api.tipsg.in/uploads/${encodeURIComponent(fileName)}`);
+    const response = await fetch(`https://hrms-backend-i9gs.onrender.com/uploads/${encodeURIComponent(fileName)}`);
 
     if (!response.ok) {
       showToast("File Not Uploaded","info")

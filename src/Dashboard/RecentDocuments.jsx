@@ -86,7 +86,7 @@ const RecentDocuments = ({ documents = {} }) => {
             </div>
             
            <a
-            href={`https://hrms-api.tipsg.in/uploads/${doc.file}`}
+            href={`https://hrms-backend-i9gs.onrender.com/uploads/${doc.file}`}
             target="_blank"
             className="text-xs text-purple-600 hover:underline"
            >

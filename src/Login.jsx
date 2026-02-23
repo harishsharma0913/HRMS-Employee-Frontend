@@ -20,7 +20,7 @@ const Login = ({ onLogin }) => {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch("https://hrms-api.tipsg.in/login", {
+    const response = await fetch("https://hrms-backend-i9gs.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
